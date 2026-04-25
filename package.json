@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "serve . -l 3000",
-    "start": "serve . -l 3000"
+    "start": "serve . -l 3000",
+    "vercel:link": "vercel link",
+    "vercel:pull": "vercel pull --yes",
+    "vercel:build": "vercel build",
+    "vercel:deploy": "vercel deploy --prebuilt"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +18,8 @@
   "type": "commonjs",
   "dependencies": {
     "serve": "^14.2.6"
+  },
+  "devDependencies": {
+    "vercel": "^52.0.0"
   }
 }
