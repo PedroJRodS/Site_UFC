@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+
+<html class="dark" lang="pt-br"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#8e9198",
+                      "surface-container": "#1f2022",
+                      "inverse-on-surface": "#2f3033",
+                      "tertiary-fixed": "#ffdbce",
+                      "primary-fixed-dim": "#afc8f0",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#6f88ad",
+                      "on-tertiary": "#4f2411",
+                      "outline-variant": "#43474e",
+                      "on-background": "#e3e2e5",
+                      "surface-variant": "#343537",
+                      "on-primary-fixed": "#001c3a",
+                      "surface-container-low": "#1a1c1e",
+                      "surface-container-high": "#292a2c",
+                      "secondary-fixed-dim": "#a7c8ff",
+                      "error": "#ffb4ab",
+                      "secondary": "#a7c8ff",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "on-primary": "#fefcff",
+                      "surface-container-highest": "#343537",
+                      "on-secondary-container": "#fefcff",
+                      "background": "#121316",
+                      "secondary-fixed": "#d5e3ff",
+                      "primary": "#0074d9",
+                      "surface-dim": "#121316",
+                      "inverse-primary": "#476083",
+                      "surface": "#121316",
+                      "secondary-container": "#0074d9",
+                      "surface-tint": "#afc8f0",
+                      "on-tertiary-fixed-variant": "#6b3a25",
+                      "tertiary": "#ff7a1a",
+                      "on-secondary-fixed-variant": "#004788",
+                      "on-error-container": "#ffdad6",
+                      "surface-bright": "#38393c",
+                      "tertiary-container": "#391303",
+                      "on-error": "#690005",
+                      "on-surface": "#e3e2e5",
+                      "surface-container-lowest": "#0d0e11",
+                      "on-secondary": "#003060",
+                      "on-surface-variant": "#c4c6cf",
+                      "tertiary-fixed-dim": "#fdb69a",
+                      "on-tertiary-fixed": "#351002",
+                      "primary-container": "#001f3f",
+                      "inverse-surface": "#e3e2e5",
+                      "on-secondary-fixed": "#001b3b",
+                      "on-tertiary-container": "#b5785f",
+                      "primary-fixed": "#d4e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max": "1440px",
+                      "unit": "8px",
+                      "margin": "40px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-md": ["Space Grotesk"],
+                      "label-sm": ["Inter"],
+                      "display-xl": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Space Grotesk"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "label-sm": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        :root {
+            --brand-bg-deep: #0b1218;
+            --brand-surface: #121316;
+            --brand-neon-blue: #0074d9;
+            --brand-neon-blue-soft: #afc8f0;
+            --brand-accent-orange: #ff7a1a;
+            --brand-text-high: #e3e2e5;
+            --brand-text-muted: #c4c6cf;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light-leak-top {
+            border-top: 1px solid rgba(175, 200, 240, 0.15);
+        }
+        .cyan-glow:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+        }
+        .dot-pattern {
+            background-image: radial-gradient(rgba(142, 145, 152, 0.1) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--brand-neon-blue-soft) 0%, var(--brand-neon-blue) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 0 1px rgba(0, 116, 217, 0.35), 0 0 22px rgba(0, 116, 217, 0.28);
+        }
+        .orange-glow-hover:hover {
+            box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.35), 0 0 22px rgba(255, 122, 26, 0.24);
+        }
+        .btn-primary-neon {
+            background-color: var(--brand-neon-blue);
+            color: #fefcff;
+            transition: all 300ms ease;
+        }
+        .btn-primary-neon:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 1px rgba(0, 116, 217, 0.35), 0 0 22px rgba(0, 116, 217, 0.28);
+        }
+        .btn-accent-neon:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 0 1px rgba(255, 122, 26, 0.35), 0 0 22px rgba(255, 122, 26, 0.24);
+        }
+        .focus-neon:focus-visible {
+            outline: 2px solid var(--brand-neon-blue);
+            outline-offset: 2px;
+        }
+        .focus-error {
+            border-color: #ff6b6b !important;
+            box-shadow: 0 0 0 1px rgba(255, 107, 107, 0.5);
+        }
+        .focus-success {
+            border-color: #34d399 !important;
+            box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.45);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden dot-pattern" style="background-color: var(--brand-surface);">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-8 max-w-screen-2xl mx-auto">
+<div class="flex flex-col text-sm font-bold text-white dark:text-slate-50 tracking-widest uppercase font-headline-md leading-none">
+<span>UFC | AI</span>
+<span class="text-[10px] text-primary opacity-80">Centro de Inovação</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">INSTITUCIONAL</a>
+<a class="text-primary border-b-2 border-primary transition-all duration-300 py-1 font-headline-md text-body-md" href="#">Pesquisa</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">Acadêmico</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">Inovação</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">Admissão</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">PARCERIAS GLOBAL</a>
+<a class="text-slate-400 hover:text-white transition-colors font-headline-md text-body-md" href="#">Campus</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-cyan-400 transition-colors cursor-pointer">search</span>
+</div>
+<button class="btn-primary-neon focus-neon px-6 py-2 font-label-sm text-label-sm uppercase tracking-widest scale-95 active:scale-90">
+                    Portal Institucional
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center justify-center overflow-hidden px-8">
+<div class="absolute inset-0 z-0">
+<img alt="Futuro da IA" class="w-full h-full object-cover opacity-50 mix-blend-luminosity" data-alt="Retrato de uma pesquisadora visionária e acolhedora, com olhar inteligente, em um laboratório de alta tecnologia com iluminação cinematográfica dramática e ao mesmo tempo calorosa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYQvT_0R6u0V9v9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9vV9v"/>
+<div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface/60 to-surface"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-12 lg:col-span-10 xl:col-span-8">
+<span class="font-label-sm text-primary uppercase tracking-[0.3em] mb-6 block">Centro de Inovação em IA</span>
+<h1 class="font-display-xl text-[48px] md:text-display-xl text-white mb-8 leading-tight">
+                        UFC AI: O FUTURO DA <span class="text-primary">INTELIGÊNCIA ARTIFICIAL</span> NO NORDESTE.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                        Conectando o potencial acadêmico da UFC ao ecossistema global de inovação, impulsionando a sociedade e a economia digital.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<button class="btn-primary-neon focus-neon px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                            Explorar Pesquisas <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="glass-panel neon-glow-hover focus-neon text-white border border-white/20 px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest hover:bg-white/5 transition-all duration-300">
+                            Conheça nosso Centro
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- New Section: DA UFC PARA O MUNDO -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-10">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-[600px] text-primary/20 blur-sm">account_balance</span>
+</div>
+</div>
+<div class="max-w-4xl mx-auto px-8 text-center relative z-10">
+<h2 class="font-display-xl text-headline-lg text-white mb-8">DA UFC PARA O MUNDO</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    Nascidos da tradição acadêmica da Universidade Federal do Ceará, somos o ponto de convergência entre a excelência em pesquisa, o empreendedorismo local e a transformação tecnológica do Nordeste brasileiro.
+                </p>
+<div class="mt-12 flex justify-center gap-4 opacity-50">
+<span class="w-16 h-[1px] bg-primary self-center"></span>
+<span class="material-symbols-outlined text-primary">hub</span>
+<span class="w-16 h-[1px] bg-primary self-center"></span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Highlights -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-12 grid-rows-2 gap-8 h-auto lg:h-[800px]">
+<!-- Large Feature Card -->
+<div class="col-span-12 lg:col-span-7 row-span-2 glass-panel neon-glow-hover p-12 flex flex-col justify-between group overflow-hidden relative transition-all duration-300 hover:-translate-y-1">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-40 transition-all duration-700 pointer-events-none">
+<!-- Minimalist artistic carnaúba icon placeholder logic -->
+<div class="relative">
+<span class="material-symbols-outlined text-[160px] text-primary" style="font-variation-settings: 'FILL' 1;">forest</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[100px] text-white/40" style="font-variation-settings: 'FILL' 0;">grain</span>
+</div>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-4 mb-8">
+<span class="w-12 h-[1px] bg-primary"></span>
+<span class="font-label-sm text-primary uppercase tracking-widest">Destaque em Inovação</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-6">Otimização Neural em Ecossistemas Tropicais</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg">
+                            Utilizando modelos generativos avançados e padrões de inteligência artificial integrados à resiliência biômica do semiárido.
+                        </p>
+</div>
+<div class="mt-12">
+<button class="flex items-center gap-4 group-hover:text-primary transition-colors font-label-sm text-label-sm uppercase tracking-widest">
+                            Ler Publicação <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">east</span>
+</button>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="col-span-12 lg:col-span-5 glass-panel neon-glow-hover p-10 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:-translate-y-1">
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+<div>
+<span class="material-symbols-outlined text-primary mb-6">workspace_premium</span>
+<h3 class="font-headline-md text-headline-md text-white mb-4">Admissão 2025</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Junte-se à próxima geração de visionários em IA. Inscrições abertas para Pesquisa em Pós-Graduação.</p>
+</div>
+<div class="mt-6">
+<a class="text-primary font-label-sm text-label-sm uppercase tracking-widest" href="#">Inscreva-se Agora</a>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="col-span-12 lg:col-span-5 glass-panel orange-glow-hover p-10 flex flex-col justify-between relative overflow-hidden group transition-all duration-300 hover:-translate-y-1">
+<div class="absolute -left-12 -top-12 w-48 h-48 bg-tertiary/5 rounded-full blur-3xl"></div>
+<div>
+<span class="material-symbols-outlined text-tertiary mb-6">hub</span>
+<h3 class="font-headline-md text-headline-md text-white mb-4">Transferência Tecnológica</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Parcerias industriais e registros de patentes por meio do nosso Hub de Inovação.</p>
+</div>
+<div class="mt-6">
+<a class="text-tertiary font-label-sm text-label-sm uppercase tracking-widest" href="#">Portal de Parcerias</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Image & Stats Section -->
+<section class="py-24 bg-surface-container-lowest/50 relative">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-12 lg:col-span-6 order-2 lg:order-1">
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/10 blur-xl rounded-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Pesquisadores Multiculturais" class="relative rounded-lg grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border border-white/10 w-full h-[500px] object-cover" data-alt="Grupo diverso e multicultural de pesquisadores e estudantes colaborando em torno de um tablet em um laboratório moderno de IA, com diversidade de gênero e etnia" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc-i-KlvYn0V9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9XvV9Xv"/>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 lg:pl-20 order-1 lg:order-2 mb-12 lg:mb-0">
+<h2 class="font-display-xl text-[48px] text-white mb-8 leading-tight">PRECISÃO EM <br/>CADA <span class="text-primary">BYTE</span>.</h2>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<div class="text-[40px] md:text-display-xl font-display-xl text-primary mb-2">1000+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Pesquisadores e Alunos</div>
+</div>
+<div>
+<div class="text-[40px] md:text-display-xl font-display-xl text-primary mb-2">50k+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Potência de GPU</div>
+</div>
+<div>
+<div class="text-[40px] md:text-display-xl font-display-xl text-primary mb-2">200+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Patentes Globais</div>
+</div>
+<div>
+<div class="text-[40px] md:text-display-xl font-display-xl text-primary mb-2">25+</div>
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Co-Labs de IA</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Academic Tracks Section -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<span class="font-label-sm text-primary uppercase tracking-[0.3em] mb-4 block">Excelência Acadêmica</span>
+<h2 class="font-headline-lg text-headline-lg text-white">Trilhas Avançadas de Pesquisa</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Track 1 -->
+<div class="p-8 border border-white/5 hover:border-primary/40 transition-all duration-300 bg-surface-container-low group neon-glow-hover hover:-translate-y-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-8" style="font-variation-settings: 'FILL' 0;">psychology</span>
+<h4 class="font-headline-md text-headline-md text-white mb-4">Modelos Cognitivos</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Explorando a arquitetura do pensamento por meio de redes neurais sintéticas.</p>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/3"></div>
+</div>
+</div>
+<!-- Track 2 -->
+<div class="p-8 border border-white/5 hover:border-primary/40 transition-all duration-300 bg-surface-container-low group neon-glow-hover hover:-translate-y-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-8" style="font-variation-settings: 'FILL' 0;">data_thresholding</span>
+<h4 class="font-headline-md text-headline-md text-white mb-4">IA Ética</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Desenvolvendo frameworks para tomada de decisão algorítmica transparente e sem vieses.</p>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-2/3"></div>
+</div>
+</div>
+<!-- Track 3 -->
+<div class="p-8 border border-white/5 hover:border-primary/40 transition-all duration-300 bg-surface-container-low group neon-glow-hover hover:-translate-y-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-8" style="font-variation-settings: 'FILL' 0;">biotech</span>
+<h4 class="font-headline-md text-headline-md text-white mb-4">Bioinformática</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Aplicando IA para decodificar sequências genômicas complexas e patologias tropicais.</p>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-1/2"></div>
+</div>
+</div>
+<!-- Track 4: IA APLICADA AO NORDESTE -->
+<div class="p-8 border border-white/5 hover:border-primary/40 transition-all duration-300 bg-surface-container-low group neon-glow-hover hover:-translate-y-1">
+<span class="material-symbols-outlined text-4xl text-primary mb-8" style="font-variation-settings: 'FILL' 0;">surfing</span>
+<h4 class="font-headline-md text-headline-md text-white mb-4">IA Aplicada</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Soluções para o semiárido, agricultura de precisão, saúde e logística portuária.</p>
+<div class="w-full h-1 bg-white/5 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary w-3/4"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Call to Action: Above Footer -->
+<section class="py-24 px-8 border-t border-white/5 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+<!-- Col 1 -->
+<div class="glass-panel p-12 hover:border-primary/40 transition-all duration-300 neon-glow-hover flex flex-col justify-between">
+<div>
+<h2 class="font-display-xl text-headline-lg text-white mb-4">INOVE CONOSCO</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Seja uma empresa parceira e tenha acesso a talentos, laboratórios de ponta e pesquisa de fronteira em Inteligência Artificial.</p>
+</div>
+<button class="btn-primary-neon focus-neon px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest w-fit">
+                        Quero ser parceiro
+                    </button>
+</div>
+<!-- Col 2 -->
+<div class="glass-panel p-12 hover:border-tertiary/40 transition-all duration-300 orange-glow-hover flex flex-col justify-between border-tertiary/20">
+<div>
+<h2 class="font-display-xl text-headline-lg text-white mb-4">FAÇA PARTE DO FUTURO</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Cursos de Pós-graduação, Residência Tecnológica e oportunidades de pesquisa para estudantes de todo o Brasil.</p>
+</div>
+<button class="border border-tertiary text-tertiary px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest hover:bg-tertiary hover:text-on-tertiary transition-all duration-300 btn-accent-neon focus-neon w-fit">
+                        Portal de Oportunidades
+                    </button>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="py-24 px-8">
+<div class="max-w-5xl mx-auto glass-panel p-16 text-center relative overflow-hidden">
+<div class="absolute inset-0 pointer-events-none">
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-6">Permaneça na Fronteira</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    Assine nosso boletim trimestral de Pesquisa em IA para receber insights sobre nossos avanços mais recentes e publicações acadêmicas.
+                </p>
+<form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto" id="newsletter-form" novalidate>
+<input class="bg-surface-container-highest border-b border-primary focus:border-primary focus:ring-0 text-white flex-grow p-4 font-body-md focus-neon" id="newsletter-email" placeholder="E-mail Institucional" type="email"/>
+<button class="btn-primary-neon focus-neon px-8 py-4 font-label-sm text-label-sm uppercase tracking-widest" type="submit">
+                        Assinar
+                    </button>
+</form>
+<p aria-live="polite" class="mt-4 text-sm text-on-surface-variant" id="newsletter-feedback"></p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-white/5 py-12 bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col text-lg font-black text-white font-headline-md uppercase tracking-widest leading-none">
+<span>UFC | AI</span>
+<span class="text-[10px] text-primary">Centro de Inovação</span>
+</div>
+<p class="text-slate-500 font-label-sm text-label-sm uppercase tracking-wider">
+                    © 2024 Universidade Federal do Ceará | Laboratório de Inteligência Artificial. Todos os direitos reservados.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 hover:text-cyan-300 font-label-sm text-label-sm uppercase tracking-wider transition-transform hover:translate-x-1" href="#">Ética e Privacidade</a>
+<a class="text-slate-500 hover:text-cyan-300 font-label-sm text-label-sm uppercase tracking-wider transition-transform hover:translate-x-1" href="#">Repositório Institucional</a>
+<a class="text-slate-500 hover:text-cyan-300 font-label-sm text-label-sm uppercase tracking-wider transition-transform hover:translate-x-1" href="#">Parcerias Globais</a>
+</div>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-slate-500 hover:text-white cursor-pointer transition-colors">language</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-white cursor-pointer transition-colors">terminal</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-white cursor-pointer transition-colors">shield</span>
+</div>
+</div>
+</footer>
+<script>
+    (function () {
+        const heroImg = document.querySelector('img[alt="Futuro da IA"]');
+        const teamImg = document.querySelector('img[alt="Pesquisadores Multiculturais"]');
+        if (heroImg && heroImg.src.includes("lh3.googleusercontent.com")) {
+            heroImg.src = "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=2000&q=80";
+        }
+        if (teamImg && teamImg.src.includes("lh3.googleusercontent.com")) {
+            teamImg.src = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80";
+        }
+
+        const form = document.getElementById("newsletter-form");
+        const email = document.getElementById("newsletter-email");
+        const feedback = document.getElementById("newsletter-feedback");
+        if (!form || !email || !feedback) return;
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const value = (email.value || "").trim();
+            const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+            email.classList.remove("focus-error", "focus-success");
+            if (!valid) {
+                email.classList.add("focus-error");
+                feedback.textContent = "Digite um e-mail institucional valido para continuar.";
+                feedback.classList.remove("text-emerald-400");
+                feedback.classList.add("text-red-400");
+                return;
+            }
+
+            email.classList.add("focus-success");
+            feedback.textContent = "Inscricao concluida com sucesso. Obrigado por acompanhar o UFC AI.";
+            feedback.classList.remove("text-red-400");
+            feedback.classList.add("text-emerald-400");
+            form.reset();
+        });
+    })();
+</script>
+</body></html>
+
+
